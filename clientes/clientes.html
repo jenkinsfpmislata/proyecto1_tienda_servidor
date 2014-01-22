@@ -1,0 +1,30 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="../js/jquery-1.6.3.min.js"></script>
+        <script>
+        $(document).ready(function() {
+            $.ajax({
+                dataType: 'json',
+                url: 'clientes.php',
+                success: function(data) {
+                    datos = '<h3>Clientes</h3><table><tr><td>ID</td><td>nombre</td><td>Opciones</td>';
+                    $variable = 0;
+                    $.each(data, function(index) {
+                        datos += '<tr><td>'+data[index].idCliente+'</td><td>' + data[index].nombre + '</td><td></td></tr>';
+                    });
+                    datos+='</table>';
+                    $('#clientes').html(datos);
+                }
+            });
+        });
+            </script>
+    </head>
+    <body>
+        <div id="clientes"></div>
+    </body>
+</html>
