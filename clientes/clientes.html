@@ -56,10 +56,19 @@ and open the template in the editor.
                     }
                 });
             }
+            function insertar(){
+                $.ajax({
+                   url:'formularioNuevoCliente.html',
+                   success: function(data) {
+                        $('#clientes').html(data);
+                    }
+                });
+            }
         </script>
     </head>
     <body>
         <h3>Clientes</h3>
         <div id="clientes"></div>
+        <a href="javascript:insertar()">Insertar Cliente</a>
     </body>
 </html>
