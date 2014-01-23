@@ -10,15 +10,15 @@ and open the template in the editor.
             $(document).ready(function() {
                 $.ajax({
                     dataType: 'json',
-                    url: 'clientes.php',
+                    url: 'articulos.php',
                     success: function(data) {
                         datos = '<table><tr><td>ID</td><td>nombre</td><td>Opciones</td>';
                         $variable = 0;
                         $.each(data, function(index) {
-                            datos += '<tr><td>' + data[index].idCliente + '</td><td>' + data[index].nombre + '</td><td><a href=javascript:borrar(' + data[index].idCliente + ')>Borrar</a></td><td><a href=javascript:actualizar(' + data[index].idCliente + ')>Update</a></td></tr>';
+                            datos += '<tr><td>' + data[index].idArticulo + '</td><td>' + data[index].nombreArticulo + '</td><td><a href=javascript:borrar(' + data[index].idArticulo + ')>Borrar</a></td><td><a href=javascript:actualizar(' + data[index].idArticulo + ')>Update</a></td></tr>';
                         });
-                        datos += '</table><a href="javascript:insertar()">Insertar Cliente</a>';
-                        $('#clientes').html(datos);
+                        datos += '</table>';
+                        $('#articulos').html(datos);
                     }
                 });
             });
@@ -26,21 +26,21 @@ and open the template in the editor.
             function borrar(id) {
                 $.ajax({
                     dataType: 'json',
-                    url: 'clientes_delete.php',
+                    url: 'articulos_delete.php',
                     type: 'POST',
                     data: 'id=' + id,
                     success: function() {
                         $.ajax({
                             dataType: 'json',
-                            url: 'clientes.php',
+                            url: 'articulos.php',
                             success: function(data) {
                                 datos = '<table><tr><td>ID</td><td>nombre</td><td>Opciones</td>';
                                 $variable = 0;
                                 $.each(data, function(index) {
-                                    datos += '<tr><td>' + data[index].idCliente + '</td><td>' + data[index].nombre + '</td><td><a href=javascript:borrar(' + data[index].idCliente + ')>Borrar</a></td><td><a href=javascript:actualizar(' + data[index].idCliente + ')>Update</a></td></tr>';
+                                    datos += '<tr><td>' + data[index].idArticulos + '</td><td>' + data[index].nombreArticulo + '</td><td><a href=javascript:borrar(' + data[index].idArticulo + ')>Borrar</a></td><td><a href=javascript:actualizar(' + data[index].idArticulo + ')>Update</a></td></tr>';
                                 });
                                 datos += '</table><a href="javascript:insertar()">Insertar Cliente</a>';
-                                $('#clientes').html(datos);
+                                $('#articulos').html(datos);
                             }
                         });
                     }
@@ -48,26 +48,29 @@ and open the template in the editor.
             }
             function actualizar(id) {
                 $.ajax({
-                    url: 'clientes_form_update.php',
+                    url: 'articulos_form_update.php',
                     type: 'POST',
-                    data: 'id=' + id,
+                    data: 'idArticulo=' + id,
                     success: function(data) {
-                        $('#clientes').html(data);
+                        $('#articulos').html(data);
                     }
                 });
             }
             function insertar() {
                 $.ajax({
-                    url: 'clientes_form_new.html',
+                    url: 'articulos_form_new.html',
                     success: function(data) {
-                        $('#clientes').html(data);
+                        $('#articulos').html(data);
                     }
                 });
             }
         </script>
     </head>
     <body>
-        <h3>Clientes</h3>
-        <div id="clientes"></div>
+        <h3>Articulos</h3>
+        <div id="articulos">
+            
+        </div>
+        <a href="javascript:insertar()">Insertar Articulo</a>
     </body>
 </html>
