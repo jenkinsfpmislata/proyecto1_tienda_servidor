@@ -15,7 +15,7 @@
     </head>
     <body>
         <h3>Modifica el cliente</h3>
-        <form name='update' action='clientes_update.php' method='POST'> 
+        <form name='update' action='categorias_update.php' method='POST'> 
             Id: <input type='text' name='idCategoria' value='<?=$fila["idCategoria"]?>' readonly><br>
             Nombre: <input type='text' name='nombreCategoria' value='<?=$fila["nombreCategoria"]?>'><br>
 
