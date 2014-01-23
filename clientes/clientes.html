@@ -17,7 +17,7 @@ and open the template in the editor.
                         $.each(data, function(index) {
                             datos += '<tr><td>' + data[index].idCliente + '</td><td>' + data[index].nombre + '</td><td><a href=javascript:borrar(' + data[index].idCliente + ')>Borrar</a></td><td><a href=javascript:actualizar(' + data[index].idCliente + ')>Update</a></td></tr>';
                         });
-                        datos += '</table>';
+                        datos += '</table><a href="javascript:insertar()">Insertar Cliente</a>';
                         $('#clientes').html(datos);
                     }
                 });
@@ -26,7 +26,7 @@ and open the template in the editor.
             function borrar(id) {
                 $.ajax({
                     dataType: 'json',
-                    url: 'borrarClientes.php',
+                    url: 'clientes_delete.php',
                     type: 'POST',
                     data: 'id=' + id,
                     success: function() {
@@ -39,7 +39,7 @@ and open the template in the editor.
                                 $.each(data, function(index) {
                                     datos += '<tr><td>' + data[index].idCliente + '</td><td>' + data[index].nombre + '</td><td><a href=javascript:borrar(' + data[index].idCliente + ')>Borrar</a></td><td><a href=javascript:actualizar(' + data[index].idCliente + ')>Update</a></td></tr>';
                                 });
-                                datos += '</table>';
+                                datos += '</table><a href="javascript:insertar()">Insertar Cliente</a>';
                                 $('#clientes').html(datos);
                             }
                         });
@@ -48,7 +48,7 @@ and open the template in the editor.
             }
             function actualizar(id) {
                 $.ajax({
-                    url: 'clientes_form.php',
+                    url: 'clientes_form_update.php',
                     type: 'POST',
                     data: 'id=' + id,
                     success: function(data) {
@@ -56,10 +56,10 @@ and open the template in the editor.
                     }
                 });
             }
-            function insertar(){
+            function insertar() {
                 $.ajax({
-                   url:'formularioNuevoCliente.html',
-                   success: function(data) {
+                    url: 'clientes_form_new.html',
+                    success: function(data) {
                         $('#clientes').html(data);
                     }
                 });
@@ -69,6 +69,5 @@ and open the template in the editor.
     <body>
         <h3>Clientes</h3>
         <div id="clientes"></div>
-        <a href="javascript:insertar()">Insertar Cliente</a>
     </body>
 </html>
