@@ -17,7 +17,7 @@ and open the template in the editor.
                         $.each(data, function(index) {
                             datos += '<tr><td>' + data[index].idCliente + '</td><td>' + data[index].nombre + '</td><td><a href=javascript:borrar(' + data[index].idCliente + ')>Borrar</a></td><td><a href=javascript:actualizar(' + data[index].idCliente + ')>Update</a></td></tr>';
                         });
-                        datos += '</table><a href="javascript:insertar()">Insertar Cliente</a>';
+                        datos += '</table><a href="javascript:insertar()">Insertar Categoria</a>';
                         $('#clientes').html(datos);
                     }
                 });
