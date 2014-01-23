@@ -17,7 +17,7 @@ and open the template in the editor.
                         $.each(data, function(index) {
                             datos += '<tr><td>' + data[index].idArticulo + '</td><td>' + data[index].nombreArticulo + '</td><td><a href=javascript:borrar(' + data[index].idArticulo + ')>Borrar</a></td><td><a href=javascript:actualizar(' + data[index].idArticulo + ')>Update</a></td></tr>';
                         });
-                        datos += '</table>';
+                        datos += '</table><a href="javascript:insertar()">Insertar Articulo</a>';
                         $('#articulos').html(datos);
                     }
                 });
@@ -37,9 +37,9 @@ and open the template in the editor.
                                 datos = '<table><tr><td>ID</td><td>nombre</td><td>Opciones</td>';
                                 $variable = 0;
                                 $.each(data, function(index) {
-                                    datos += '<tr><td>' + data[index].idArticulos + '</td><td>' + data[index].nombreArticulo + '</td><td><a href=javascript:borrar(' + data[index].idArticulo + ')>Borrar</a></td><td><a href=javascript:actualizar(' + data[index].idArticulo + ')>Update</a></td></tr>';
+                                    datos += '<tr><td>' + data[index].idArticulo + '</td><td>' + data[index].nombreArticulo + '</td><td><a href=javascript:borrar(' + data[index].idArticulo + ')>Borrar</a></td><td><a href=javascript:actualizar(' + data[index].idArticulo + ')>Update</a></td></tr>';
                                 });
-                                datos += '</table><a href="javascript:insertar()">Insertar Cliente</a>';
+                                datos += '</table><a href="javascript:insertar()">Insertar Articulo</a>';
                                 $('#articulos').html(datos);
                             }
                         });
@@ -69,8 +69,8 @@ and open the template in the editor.
     <body>
         <h3>Articulos</h3>
         <div id="articulos">
-            
-        </div>
         <a href="javascript:insertar()">Insertar Articulo</a>
+        </div>
+        
     </body>
 </html>
