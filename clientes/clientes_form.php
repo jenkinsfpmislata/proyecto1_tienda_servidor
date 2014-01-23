@@ -26,7 +26,6 @@
             DNI: <input type='text' name='dni' value='<?=$fila["dni"]?>'><br>
 
             <input type='submit' value='Submit'>
-            <input type='reset' value='Reset'>
         </form>
     </body>
 </html>
