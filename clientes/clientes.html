@@ -15,9 +15,9 @@ and open the template in the editor.
                         datos = '<table><tr><td>ID</td><td>nombre</td><td>Opciones</td>';
                         $variable = 0;
                         $.each(data, function(index) {
-                            datos += '<tr><td>' + data[index].idCliente + '</td><td>' + data[index].nombre + '</td><td><a href=javascript:borrar(' + data[index].idCliente + ')>Borrar</a></td></tr>';
+                            datos += '<tr><td>' + data[index].idCliente + '</td><td>' + data[index].nombre + '</td><td><a href=javascript:borrar(' + data[index].idCliente + ')>Borrar</a></td><td><a href=javascript:actualizar(' + data[index].idCliente + ')>Update</a></td></tr>';
                         });
-                        datos += '</table>';
+                        datos += '</table><a href="javascript:insertar()">Insertar Clientes</a>';
                         $('#clientes').html(datos);
                     }
                 });
@@ -26,7 +26,7 @@ and open the template in the editor.
             function borrar(id) {
                 $.ajax({
                     dataType: 'json',
-                    url: 'borrarClientes.php',
+                    url: 'clientes_delete.php',
                     type: 'POST',
                     data: 'id=' + id,
                     success: function() {
@@ -37,12 +37,30 @@ and open the template in the editor.
                                 datos = '<table><tr><td>ID</td><td>nombre</td><td>Opciones</td>';
                                 $variable = 0;
                                 $.each(data, function(index) {
-                                    datos += '<tr><td>' + data[index].idCliente + '</td><td>' + data[index].nombre + '</td><td><a href=javascript:borrar(' + data[index].idCliente + ')>Borrar</a></td></tr>';
+                                    datos += '<tr><td>' + data[index].idCliente + '</td><td>' + data[index].nombre + '</td><td><a href=javascript:borrar(' + data[index].idCliente + ')>Borrar</a></td><td><a href=javascript:actualizar(' + data[index].idCliente + ')>Update</a></td></tr>';
                                 });
-                                datos += '</table>';
+                                datos += '</table><a href="javascript:insertar()">Insertar Clientes</a>';
                                 $('#clientes').html(datos);
                             }
                         });
+                    }
+                });
+            }
+            function actualizar(id) {
+                $.ajax({
+                    url: 'clientes_form_update.php',
+                    type: 'POST',
+                    data: 'id=' + id,
+                    success: function(data) {
+                        $('#clientes').html(data);
+                    }
+                });
+            }
+            function insertar() {
+                $.ajax({
+                    url: 'clientes_form_new.html',
+                    success: function(data) {
+                        $('#clientes').html(data);
                     }
                 });
             }
@@ -50,6 +68,8 @@ and open the template in the editor.
     </head>
     <body>
         <h3>Clientes</h3>
-        <div id="clientes"></div>
+        <div id="clientes">
+            <a href="javascript:insertar()">Insertar Clientes</a>
+        </div>
     </body>
 </html>
