@@ -34,20 +34,10 @@
                     type: 'POST',
                     data: 'idCategoria=' + idCategoria,
                     success: function() {
-                        $.ajax({
-                            dataType: 'json',
-                            url: 'categorias/categorias.php',
-                            success: function(data) {
-                                datos = '<table><tr><th></th><th>Id</th><th>Nombre</th><th>Opciones</th></tr>';
-                                $variable = 0;
-                                $.each(data, function(index) {
-                                    datos += '<tr><td></td><td>' + data[index].idCategoria + '</td><td>' + data[index].nombreCategoria + '</td><td><a href=javascript:borrar(' + data[index].idCategoria + ')>Borrar</a></td><td><a href=javascript:actualizar(' + data[index].idCategoria + ')>Update</a></td></tr>';
-                                });
-                                datos += '</table>';
-                                $('#categorias').html(datos);
-                            }
-                        });
-                        $('#categorias').html(data);
+
+                        $('#categorias').html(datos);
+
+
                     }
                 });
             }
