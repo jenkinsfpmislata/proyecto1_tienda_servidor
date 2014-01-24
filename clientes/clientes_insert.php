@@ -8,7 +8,7 @@ $email=$_POST["email"];
 $dni=$_POST["dni"];
 
 
-$db=mysql_connect("localhost","root","") or die("Connection Error".mysql_error());
+$db=mysql_connect("localhost","root","frodo2013") or die("Connection Error".mysql_error());
 mysql_select_db("proyecto1_tienda_servidor") or die("Error Connection to DB".mysql_error());
 
 $SQL = "INSERT INTO clientes VALUES ('null','$nombre','$apellido1','$apellido2','$telefono','$direccion','$email','$dni');";
