@@ -35,7 +35,7 @@
                     success: function() {
                         $.ajax({
                             dataType: 'json',
-                            url: 'categorias/categorias.php',
+                            url: './categorias.php',
                             success: function(data) {
                                 datos = '<table><tr><th></th><th>Id</th><th>Nombre</th><th>Opciones</th></tr>';
                                 $variable = 0;
@@ -51,12 +51,18 @@
             }
             function actualizar(idCategoria) {
                 $.ajax({
+                    dataType: 'json',
                     url: 'categorias/categorias_buscar.php',
                     type: 'POST',
                     data: 'idCategoria=' + idCategoria,
-                    success: function(buscar) {
-                        alert(buscar.idCategoria);
-                            
+                    success: function(data) {
+                        formulario = '<a href="" class="dropdown_button"><small class="icon plus"></small><span>Update Category</span></a>';
+                        formulario += '<div class="dropdown" style="display: block;">';
+                        formulario += '<div class="arrow"></div><div class="content"><form action="categorias/categorias_update.php" method="post">';
+                        formulario += '<p><label>Category ID:</label><input type="text" class="text w_22" name="idCategoria" value="' + data.idCategoria + '" readonly></input></p><p><label>Category Name:</label><input type="text" class="text w_22" name="nombreCategoria" value="' + data.nombreCategoria + '"></input></p>';
+                        formulario += '</form>';
+                        formulario += '<a class="button green right" onclick="document.forms[0].submit();return false;"><small class="icon check"></small><span>Save</span></a>';
+                        formulario += '<div class="clear"></div></div></div>';
                         $('#actualizar').html(formulario);
                     }
                 });
