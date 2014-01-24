@@ -55,18 +55,17 @@
                     type: 'POST',
                     data: 'idCategoria=' + idCategoria,
                     success: function(data) {
-                        datos = '<a href="" class="dropdown_button"><small class="icon plus"></small><span>Update Category</span></a>';
-                        datos += '<div class="dropdown" style="display: block;">';
-                        datos += '<div class="arrow"></div><div class="content"><form action="categorias/categorias_update.php" method="post">';
-                        $variable = 0;
+                        //datos = '<a href="" class="dropdown_button"><small class="icon plus"></small><span>Update Category</span></a>';
+                        //datos += '<div class="dropdown" style="display: block;">';
+                        //datos += '<div class="arrow"></div><div class="content"><form action="categorias/categorias_update.php" method="post">';
                         $.each(data, function(index) {
-                            datos += '<p><label>Category ID:</label><input type="text" class="text" name="idCategoria" value='+ data[index].idCategoria +'></input></p><p><label>Category Name:</label><input type="text" class="text" name="nombreCategoria" value='+ data[index].nombreCategoria +'></input></p>';
+                            datos += '<p><label>Category ID:</label><input type="text" class="text w_22" name="idCategoria" value="'+ data[index].idCategoria +'"></input></p><p><label>Category Name:</label><input type="text" class="text w_22" name="nombreCategoria" value="'+ data[index].nombreCategoria +'"></input></p>';
                             });
-                        datos += '</form>';
-                        datos += '<a class="button green right" onclick="document.forms[0].submit();return false;"><small class="icon check"></small><span>Save</span></a>';
-                        datos += '<a class="button red mr right close"><small class="icon cross"></small><span>Close</span></a>';
-                        datos += '<div class="clear"></div></div></div>';
-                        $('#actualizar').html(datos);
+                        //datos += '</form>';
+                        //datos += '<a class="button green right" onclick="document.forms[0].submit();return false;"><small class="icon check"></small><span>Save</span></a>';
+                        //datos += '<a class="button red mr right close"><small class="icon cross"></small><span>Close</span></a>';
+                        //datos += '<div class="clear"></div></div></div>';
+                        $('#pruebas').html(datos);
                     }
                 });
             }
@@ -107,10 +106,10 @@
                         <div class="modules_left">
                             <div class="module buttons" id ="actualizar">
                                 <a href="" class="dropdown_button"><small class="icon plus"></small><span>New Category</span></a>
-                                <div class="dropdown">
+                                <div class="dropdown" style="display: block;">
                                     <div class="arrow"></div>
                                     <div class="content">
-                                        <form action="categorias/categorias_insert.php" method="post">
+                                        <form action="categorias/categorias_insert.php" method="post" id="pruebas">
                                             <p>
                                                 <label for="name">Category Name:</label>
                                                 <input type="text" class="text w_22" name="nombreCategoria" value="" />

@@ -6,7 +6,7 @@
     
 	$SQL = "SELECT * from categorias where idCategoria = '$idCategoria' ; "; 
     $result = mysql_query( $SQL ) or die("Couldn t execute query.".mysql_error());
-	//$datos[];
+    
 	$i=0;
     while($fila = mysql_fetch_array($result,MYSQL_ASSOC)) 
 	{
