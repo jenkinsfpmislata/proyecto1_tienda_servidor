@@ -45,84 +45,20 @@
                     <div id="submenu">
                         <div class="modules_left">
                             <div class="module buttons">
-                                <a href="" class="dropdown_button"><small class="icon clipboard"></small><span>Table of Contents</span></a>
-                                <div class="dropdown help_index">
+                                <a href="" class="dropdown_button"><small class="icon plus"></small><span>New Category</span></a>
+                                <div class="dropdown">
                                     <div class="arrow"></div>
                                     <div class="content">
-                                        <div class="col w5">
-                                            <a href="#html">
-                                                HTML Structure
-                                                <span>The template's structure, the basic hierarchy</span>
-                                            </a>
-                                            <hr/>
-                                            <a href="#menu_help">
-                                                Menu
-                                                <span>The navigation menu structure</span>
-                                            </a>
-                                            <hr/>
-                                            <a href="#css">
-                                                CSS
-                                                <span>CSS Files and Structure</span>
-                                            </a>
-                                            <hr/>
-                                            <a href="#javascript">
-                                                Javascript
-                                                <span>This template imports three javascript files</span>
-                                            </a>
-                                            <hr/>
-                                            <a href="#modules">
-                                                Modules
-                                                <span>Modules is located below the menu bar, like this</span>
-                                            </a>
-                                            <hr/>
-                                            <a href="#text">
-                                                Text
-                                                <span>Typography options</span>
-                                            </a>
-                                            <hr/>
-                                            <a href="#box">
-                                                Box
-                                                <span>Two kind of box, with or without header</span>
-                                            </a>
-                                        </div>
-                                        <div class="col w5 last">
-                                            <a href="#column">
-                                                Column
-                                                <span>10 columns, liquid grid system</span>
-                                            </a>
-                                            <hr/>
-                                            <a href="#message">
-                                                Message
-                                                <span>Three type of messages, success, error and notice</span>
-                                            </a>
-                                            <hr/>
-                                            <a href="#buttons">
-                                                Button
-                                                <span>Buttons library, with colors and icons</span>
-                                            </a>
-                                            <hr/>
-                                            <a href="#shelf">
-                                                Shelf
-                                                <span>Great looking shelf system for content display</span>
-                                            </a>
-                                            <hr/>
-                                            <a href="#form">
-                                                Form
-                                                <span>Sytlish form with custom checkbox</span>
-                                            </a>
-                                            <hr/>
-                                            <a href="#table">
-                                                Table
-                                                <span>Basic table with hover option</span>
-                                            </a>
-                                            <hr/>
-                                            <a href="#modal">
-                                                Modal
-                                                <span>Modal window functions</span>
-                                            </a>
-                                        </div>
-                                        <div class="clear"></div>
-                                        <a class="button red right close"><small class="icon cross"></small><span>Close</span></a>
+                                        <form action="categorias/categorias_insert.php" method="post">
+                                            <p>
+                                                <label for="name">Category Name:</label>
+                                                <input type="text" class="text w_22" name="nombreCategoria" value="" />
+                                            </p>
+                                         </form>
+
+                                        <a href="" class="button green right" onclick="document.forms[0].submit();
+                                                return false;"><small class="icon check"></small><span>Save</span></a>
+                                        <a class="button red mr right close" ><small class="icon cross"></small><span>Close</span></a>
                                         <div class="clear"></div>
                                     </div>
                                 </div>
