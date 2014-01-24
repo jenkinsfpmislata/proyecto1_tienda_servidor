@@ -54,17 +54,17 @@
                     url: 'categorias/categorias_buscar.php',
                     type: 'POST',
                     data: 'idCategoria=' + idCategoria,
-                    success: function(data) {
-                        //datos = '<a href="" class="dropdown_button"><small class="icon plus"></small><span>Update Category</span></a>';
-                        //datos += '<div class="dropdown" style="display: block;">';
-                        //datos += '<div class="arrow"></div><div class="content"><form action="categorias/categorias_update.php" method="post">';
-                        $.each(data, function(index) {
-                            datos += '<p><label>Category ID:</label><input type="text" class="text w_22" name="idCategoria" value="'+ data[index].idCategoria +'"></input></p><p><label>Category Name:</label><input type="text" class="text w_22" name="nombreCategoria" value="'+ data[index].nombreCategoria +'"></input></p>';
+                    success: function(buscar) {
+                        datos = '<a href="" class="dropdown_button"><small class="icon plus"></small><span>Update Category</span></a>';
+                        datos += '<div class="dropdown" style="display: block;">';
+                        datos += '<div class="arrow"></div><div class="content"><form action="categorias/categorias_update.php" method="post">';
+                        $.each(buscar, function(index) {
+                            datos += '<p><label>Category ID:</label><input type="text" class="text w_22" name="idCategoria" value="'+ buscar[index].idCategoria +'"></input></p><p><label>Category Name:</label><input type="text" class="text w_22" name="nombreCategoria" value="'+ buscar[index].nombreCategoria +'"></input></p>';
                             });
-                        //datos += '</form>';
-                        //datos += '<a class="button green right" onclick="document.forms[0].submit();return false;"><small class="icon check"></small><span>Save</span></a>';
-                        //datos += '<a class="button red mr right close"><small class="icon cross"></small><span>Close</span></a>';
-                        //datos += '<div class="clear"></div></div></div>';
+                        datos += '</form>';
+                        datos += '<a class="button green right" onclick="document.forms[0].submit();return false;"><small class="icon check"></small><span>Save</span></a>';
+                        datos += '<a class="button red mr right close"><small class="icon cross"></small><span>Close</span></a>';
+                        datos += '<div class="clear"></div></div></div>';
                         $('#pruebas').html(datos);
                     }
                 });
