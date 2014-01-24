@@ -51,7 +51,7 @@
             }
             function actualizar(idCategoria) {
                 $.ajax({
-                    url: 'categorias_buscar.php',
+                    url: 'categorias/categorias_buscar.php',
                     type: 'POST',
                     data: 'idCategoria=' + idCategoria,
                     success: function(data) {
