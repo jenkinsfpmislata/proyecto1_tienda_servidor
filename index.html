@@ -14,12 +14,12 @@
             $(document).ready(function() {
                 $.ajax({
                     dataType: 'json',
-                    url: 'categorias.php',
+                    url: 'categorias/categorias.php',
                     success: function(data) {
                         datos = '<table><tr><th></th><th>Id</th><th>Nombre</th><th>Opciones</th></tr>';
                         $variable = 0;
                         $.each(data, function(index) {
-                            datos += '<tr><td>' + data[index].idCategoria + '</td><td>' + data[index].nombreCategoria + '</td><td><a href=javascript:borrar(' + data[index].idCategoria + ')>Borrar</a></td><td><a href=javascript:actualizar(' + data[index].idCategoria + ')>Update</a></td></tr>';
+                            datos += '<tr><td></td><td>' + data[index].idCategoria + '</td><td>' + data[index].nombreCategoria + '</td><td><a href=javascript:borrar(' + data[index].idCategoria + ')>Borrar</a></td><td><a href=javascript:actualizar(' + data[index].idCategoria + ')>Update</a></td></tr>';
                         });
                         datos += '</table>';
                         $('#categorias').html(datos);
@@ -30,23 +30,11 @@
             function borrar(idCategoria) {
                 $.ajax({
                     dataType: 'json',
-                    url: 'categorias_delete.php',
+                    url: 'categorias/categorias_delete.php',
                     type: 'POST',
                     data: 'idCategoria=' + idCategoria,
                     success: function() {
-                        $.ajax({
-                            dataType: 'json',
-                            url: 'categorias.php',
-                            success: function(data) {
-                                datos = '<table><tr><td>ID</td><td>nombre</td><td>Opciones</td>';
-                                $variable = 0;
-                                $.each(data, function(index) {
-                                    datos += '<tr><td>' + data[index].idCategoria + '</td><td>' + data[index].nombreCategoria + '</td><td><a href=javascript:borrar(' + data[index].idCategoria + ')>Borrar</a></td><td><a href=javascript:actualizar(' + data[index].idCategoria + ')>Update</a></td></tr>';
-                                });
-                                datos += '</table><a href="javascript:insertar()">Insertar Categorias</a>';
-                                $('#categorias').html(datos);
-                            }
-                        });
+                        
                     }
                 });
             }
@@ -113,10 +101,10 @@
                                                 <label for="name">Category Name:</label>
                                                 <input type="text" class="text w_22" name="nombreCategoria" value="" />
                                             </p>
-                                         </form>
+                                        </form>
 
                                         <a href="" class="button green right" onclick="document.forms[0].submit();
-                                                return false;"><small class="icon check"></small><span>Save</span></a>
+                return false;"><small class="icon check"></small><span>Save</span></a>
                                         <a class="button red mr right close" ><small class="icon cross"></small><span>Close</span></a>
                                         <div class="clear"></div>
                                     </div>
