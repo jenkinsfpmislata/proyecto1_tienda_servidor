@@ -13,8 +13,8 @@
 		$datos[$i]=array('idCategoria'=>$fila["idCategoria"],'nombreCategoria'=>$fila["nombreCategoria"]);
 		$i++;
 	}
-		
 	header('Content-type: application/json');
-	echo json_encode($datos);
+	echo json_encode($datos[0]);
 	
+        
 ?>
