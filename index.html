@@ -60,7 +60,7 @@
                         datos += '<div class="arrow"></div><div class="content"><form action="categorias/categorias_update.php" method="post">';
                         $variable = 0;
                         $.each(data, function(index) {
-                            datos += '<p><label for="id">Category ID:</label><input type="text" class="text w_22" name="idCategoria" value='+ data[index].idCategoria +' /></p><p><label for="name">Category Name:</label><input type="text" class="text w_22" name="nombreCategoria" value='+ data[index].nombreCategoria +' /></p>';
+                            datos += '<p><label for="id">Category ID:</label><input type="text" class="text w_22" name="idCategoria" value='+ data[index].idCategoria +'></input></p><p><label for="name">Category Name:</label><input type="text" class="text w_22" name="nombreCategoria" value='+ data[index].nombreCategoria +'></input></p>';
                             });
                         datos += '</form>';
                         datos += '<a href="" class="button green right" onclick="document.forms[0].submit();return false;"><small class="icon check"></small><span>Save</span></a>';
