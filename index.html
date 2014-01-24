@@ -61,7 +61,7 @@
                         $variable = 0;
                         $.each(data, function(index) {
                             alert(data[index].idCategorias);
-                            datos += '<p><label for="id">Category ID:</label><input type="text" class="text w_22" name="idCategoria" value="'+ data[index].idCategoria +'" readonly></p><p><label for="name">Category Name:</label><input type="text" class="text w_22" name="nombreCategoria" value="'+ data[index].nombreCategoria +'"></p>';
+                            datos += '<p><label for="id">Category ID:</label><input type="text" class="text w_22" name="idCategoria" value='+ data[index].idCategoria +' /></p><p><label for="name">Category Name:</label><input type="text" class="text w_22" name="nombreCategoria" value='+ data[index].nombreCategoria +' /></p>';
                             });
                         datos += '</form>';
                         datos += '<a href="" class="button green right" onclick="document.forms[0].submit();return false;"><small class="icon check"></small><span>Save</span></a>';
