@@ -56,7 +56,7 @@
                     data: 'idCategoria=' + idCategoria,
                     success: function(data) {
                         datos ='<a href="" class="dropdown_button"><small class="icon plus"></small><span>Update Category</span></a>';
-                        datos += '<div class="dropdown" style="display: block; overflow: hidden; height: 1000px; margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px;">';
+                        datos += '<div class="dropdown" style="display: block;">';
                         datos += '<div class="arrow"></div><div class="content"><form action="categorias/categorias_update.php" method="post">';
                         $variable = 0;
                         $.each(data, function(index) {
