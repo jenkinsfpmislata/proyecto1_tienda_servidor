@@ -7,5 +7,5 @@
     $SQL = "DELETE from categorias where idCategoria = '$idCategoria'"; 
     $result = mysql_query( $SQL ) or die("Couldn t execute query.".mysql_error());
     
-    echo "alert('Delete Exitoso')";
+    
     ?>

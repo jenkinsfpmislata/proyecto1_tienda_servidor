@@ -26,7 +26,6 @@
                     }
                 });
             });
-
             function borrar(idCategoria) {
                 $.ajax({
                     dataType: 'json',
@@ -34,17 +33,40 @@
                     type: 'POST',
                     data: 'idCategoria=' + idCategoria,
                     success: function() {
-                        
+                        $.ajax({
+                            dataType: 'json',
+                            url: 'categorias/categorias.php',
+                            success: function(data) {
+                                datos = '<table><tr><th></th><th>Id</th><th>Nombre</th><th>Opciones</th></tr>';
+                                $variable = 0;
+                                $.each(data, function(index) {
+                                    datos += '<tr><td></td><td>' + data[index].idCategoria + '</td><td>' + data[index].nombreCategoria + '</td><td><a href=javascript:borrar(' + data[index].idCategoria + ')>Borrar</a></td><td><a href=javascript:actualizar(' + data[index].idCategoria + ')>Update</a></td></tr>';
+                                });
+                                datos += '</table>';
+                                $('#categorias').html(datos);
+                            }
+                        });
                     }
                 });
             }
             function actualizar(idCategoria) {
                 $.ajax({
-                    url: 'categorias/categorias_form_update.php',
+                    url: 'categorias_buscar.php',
                     type: 'POST',
                     data: 'idCategoria=' + idCategoria,
                     success: function(data) {
-                        $('#categorias').html(data);
+                        datos = '<div class="dropdown" style="display: block; overflow: hidden; height: 119px; margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px;">';
+                        datos += '<div class="arrow"></div><div class="content"><form action="categorias/categorias_update.php" method="post">';
+                        $variable = 0;
+                        $.each(data, function(index) {
+                            datos += '<p><label for="id">Category ID:</label><input type="text" class="text w_22" name="idCategoria" value="'+ data[index].idCategoria +'"></p>';
+                            datos += '<p><label for="name">Category Name:</label><input type="text" class="text w_22" name="nombreCategoria" value="'+ data[index].nombreCategoria +'"></p>';
+                            });
+                        datos += '</form>';
+                        datos += '<a href="" class="button green right" onclick="document.forms[0].submit();return false;"><small class="icon check"></small><span>Save</span></a>';
+                        datos += '<a class="button red mr right close"><small class="icon cross"></small><span>Close</span></a>';
+                        datos +='<div class="clear"></div></div></div>';
+                        $('#actualizar').html(datos);
                     }
                 });
             }
@@ -83,7 +105,7 @@
                     </div>
                     <div id="submenu">
                         <div class="modules_left">
-                            <div class="module buttons">
+                            <div class="module buttons" id ="actualizar">
                                 <a href="" class="dropdown_button"><small class="icon plus"></small><span>New Category</span></a>
                                 <div class="dropdown">
                                     <div class="arrow"></div>
