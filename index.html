@@ -47,22 +47,15 @@
                                 $('#categorias').html(datos);
                             }
                         });
+                        $('#categorias').html(data);
                     }
                 });
             }
             function actualizar(idCategoria) {
                 $.ajax({
-                    url: 'categorias_form_update.php',
+                    url: 'categorias/categorias_form_update.php',
                     type: 'POST',
                     data: 'idCategoria=' + idCategoria,
-                    success: function(data) {
-                        $('#categorias').html(data);
-                    }
-                });
-            }
-            function insertar() {
-                $.ajax({
-                    url: 'categorias_form_new.html',
                     success: function(data) {
                         $('#categorias').html(data);
                     }
