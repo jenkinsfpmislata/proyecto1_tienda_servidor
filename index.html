@@ -8,14 +8,14 @@
         <meta name="description" content="" />
         <title>Gray Admin Template</title>
         <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
-        <script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>  
+        <script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
         <script>
             $(document).ready(function() {
                 $.ajax({
                     dataType: 'json',
                     url: 'categorias/categorias.php',
                     success: function(data) {
-                        datos = '<table><tr><th></th><th>Id</th><th>Nombre</th><th colspan="2" align="center">Opciones</th></tr>';
+                        datos = '<table><tr><th></th><th>Id</th><th>Nombre</th><th align="center" colspan="2" >Opciones</th></tr>';
 
                         $.each(data, function(index) {
                             datos += '<tr><td></td><td>' + data[index].idCategoria + '</td><td>' + data[index].nombreCategoria + '</td><td><a href=javascript:borrar(' + data[index].idCategoria + ')>Borrar</a></td><td><a href=javascript:actualizar(' + data[index].idCategoria + ')>Update</a></td></tr>';
@@ -36,7 +36,7 @@
                             dataType: 'json',
                             url: 'categorias/categorias.php',
                             success: function(data) {
-                                datos = '<table><tr><th></th><th>Id</th><th>Nombre</th><th>Opciones</th></tr>';
+                                datos = '<table><tr><th></th><th>Id</th><th>Nombre</th><th align="center" colspan="2" >Opciones</th></tr>';
 
                                 $.each(data, function(index) {
                                     datos += '<tr><td></td><td>' + data[index].idCategoria + '</td><td>' + data[index].nombreCategoria + '</td><td><a href=javascript:borrar(' + data[index].idCategoria + ')>Borrar</a></td><td><a href=javascript:actualizar(' + data[index].idCategoria + ')>Update</a></td></tr>';
@@ -48,6 +48,25 @@
                     }
                 });
             }
+            function borrarNombre(nombreCategoria) {
+                $.ajax({
+                    dataType: 'json',
+                    url: 'categorias/categorias_buscar_nombre.php',
+                    type: 'POST',
+                    data: 'nombreCategoria=' + nombreCategoria,
+                    success: function(data) {
+                        datos = '<table><tr><th></th><th>Id</th><th>Nombre</th><th align="center" colspan="2" >Opciones</th></tr>';
+
+                        $.each(data, function(index) {
+                            datos += '<tr><td></td><td>' + data[index].idCategoria + '</td><td>' + data[index].nombreCategoria + '</td><td><a href=javascript:borrar(' + data[index].idCategoria + ')>Borrar</a></td><td><a href=javascript:actualizar(' + data[index].idCategoria + ')>Update</a></td></tr>';
+                        });
+                        datos += '</table>';
+                        $('#categorias').html(datos);
+                    }
+                });
+            }
+            
+            
             function actualizar(idCategoria) {
                 $.ajax({
                     dataType: 'json',
@@ -124,9 +143,14 @@
                             </div>
                         </div>
                         <div class="title">
-                            Help
+                            Categorias
                         </div>
                         <div class="modules_right">
+                            <div class="module search">
+                                <form action="categorias/categorias_buscar_nombre.php" method="POST">
+                                    <p><input type="text" value="Search..." name="nombreCategoria"/></p>
+                                </form>
+                            </div>
                         </div>
                     </div>
                     <div id="desc">
@@ -140,8 +164,8 @@
                                 </div>
                             </div>
                         </div>
-                            <div id="footer">
-                                <p class="last">Copyright 2013 - Densetech - Created by <a href="">Densetech Team</a></p>
-                            </div>
-                            </body>
-                            </html>
+                        <div id="footer">
+                            <p class="last">Copyright 2013 - Densetech - Created by <a href="">Densetech Team</a></p>
+                        </div>
+                        </body>
+                        </html>

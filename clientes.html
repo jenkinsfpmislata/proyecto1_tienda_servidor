@@ -36,7 +36,7 @@
                             dataType: 'json',
                             url: 'clientes/clientes.php',
                             success: function(data) {
-                                datos = '<table><tr><th></th><th>Id</th><th>Nombre</th><th>Opciones</th></tr>';
+                                datos = '<table><tr><th></th><th>Id</th><th>Nombre</th><th>Apellido1</th><th>Apellido2</th><th>Telefono</th><th>Direccion</th><th>Email</th><th>DNI</th><th colspan="2" align="center">Opciones</th></tr>';
 
                                 $.each(data, function(index) {
                                     datos += '<tr><td></td><td>' + data[index].idCliente + '</td><td>' + data[index].nombre + '</td><td>' + data[index].apellido1 + '</td><td>' + data[index].apellido2 + '</td><td>' + data[index].telefono + '</td><td>' + data[index].direccion + '</td><td>' + data[index].email + '</td><td>' + data[index].dni + '</td><td><a href=javascript:borrar(' + data[index].idCliente + ')>Borrar</a></td><td><a href=javascript:actualizar(' + data[index].idCliente + ')>Update</a></td></tr>';
@@ -55,10 +55,17 @@
                     type: 'POST',
                     data: 'idCliente=' + idCliente,
                     success: function(data) {
-                        formulario = '<a href="" class="dropdown_button"><small class="icon plus"></small><span>Update Category</span></a>';
+                        formulario = '<a href="" class="dropdown_button"><small class="icon plus"></small><span>Update Cliente</span></a>';
                         formulario += '<div class="dropdown" style="display: block;">';
-                        formulario += '<div class="arrow"></div><div class="content"><form action="categorias/categorias_update.php" method="post">';
-                        formulario += '<p><label>Category ID:</label><input type="text" class="text w_22" name="idCategoria" value="' + data.idCategoria + '" readonly></input></p><p><label>Category Name:</label><input type="text" class="text w_22" name="nombreCategoria" value="' + data.nombreCategoria + '"></input></p>';
+                        formulario += '<div class="arrow"></div><div class="content"><form action="clientes/clientes_update.php" method="post">';
+                        formulario += '<p><label>Cliente ID:</label><input type="text" class="text w_22" name="idCliente" value="' + data.idCliente + '" readonly></input></p>';
+                        formulario += '<p><label>Cliente Name:</label><input type="text" class="text w_22" name="nombre" value="' + data.nombre + '"></input></p>';
+                        formulario += '<p><label>Cliente Surname1:</label><input type="text" class="text w_22" name="apellido1" value="' + data.apellido1 + '"></input></p>';
+                        formulario += '<p><label>Cliente Surname2:</label><input type="text" class="text w_22" name="apellido2" value="' + data.apellido2 + '"></input></p>';
+                        formulario += '<p><label>Cliente Telephon</label><input type="text" class="text w_22" name="telefono" value="' + data.telefono + '"></input></p>';
+                        formulario += '<p><label>Cliente Adress:</label><input type="text" class="text w_22" name="direccion" value="' + data.direccion + '"></input></p>';
+                        formulario += '<p><label>Cliente Email:</label><input type="text" class="text w_22" name="email" value="' + data.email + '"></input></p>';
+                        formulario += '<p><label>Cliente DNI :</label><input type="text" class="text w_22" name="dni" value="' + data.dni + '"></input></p>';
                         formulario += '</form>';
                         formulario += '<a class="button green right" onclick="document.forms[0].submit();return false;"><small class="icon check"></small><span>Save</span></a>';
                         formulario += '<div class="clear"></div></div></div>';

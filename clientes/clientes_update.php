@@ -15,5 +15,5 @@ mysql_select_db("proyecto1_tienda_servidor") or die("Error conecting to db.");
 $SQL = "UPDATE proyecto1_tienda_servidor.clientes SET nombre='$nombre',apellido1='$apellido1',apellido2='$apellido2',telefono='$telefono',direccion='$direccion',email='$email',dni='$dni' WHERE idCliente='$idCliente';";
 $result = mysql_query($SQL) or die("Couldn t execute query." . mysql_error());
  
-header ("Location: clientes.html");
+header ("Location: ../clientes.html");
 ?>
