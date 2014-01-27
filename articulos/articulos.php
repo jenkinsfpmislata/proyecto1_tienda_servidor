@@ -11,7 +11,6 @@
 		$datos[$i]=array('idArticulo'=>$fila["idArticulo"],'nombreArticulo'=>$fila["nombreArticulo"]);
 		$i++;
 	}
-		
 	header('Content-type: application/json');
 	echo json_encode($datos);
 	

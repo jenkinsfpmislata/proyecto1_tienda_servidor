@@ -5,24 +5,18 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta name="keywords" content="" />
         <meta name="description" content="" />
-        <title>Admin Template</title>
+        <title>Gray Admin Template</title>
         <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
         <script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
         <script src="js/global.js" type="text/javascript" charset="utf-8"></script>
         <script src="js/modal.js" type="text/javascript" charset="utf-8"></script>
-        
         <script>
             $(document).ready(function() {
                 $.ajax({
                     dataType: 'json',
                     url: 'articulos/articulos.php',
-                    success: function(data) {
-                        datos = '<table><tr><th></th><th>Id</th><th>Nombre</th><th>Opciones</th></tr>';
-
-                        $.each(data, function(index) {
-                            datos += '<tr><td></td><td>' + data[index].idCategoria + '</td><td>' + data[index].nombreCategoria + '</td><td><a href=javascript:borrar(' + data[index].idCategoria + ')>Borrar</a></td><td><a href=javascript:actualizar(' + data[index].idCategoria + ')>Update</a></td></tr>';
-                        });
-                        datos += '</table>';
+                    success : function(data){
+                        datos = "<p>Funciona</p>";
                         $('#clientes').html(datos);
                     }
                 });
@@ -117,6 +111,7 @@
                         </div>
                     </div>
                     <div id="desc">
+                        
                         <div class="body">
                             <div id="table" class="help">
                                 <h1>Clientes : </h1>
