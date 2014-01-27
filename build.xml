@@ -12,9 +12,7 @@
     <target name="desplegarProduccion">
         <property file="/home/jenkins/environment/proyecto1/proyecto1_tienda_servidor.properties"></property>
         <scp todir="${user}:${password}@${host}:${path}" trust="yes" >
-             <fileset dir=".">
-                <include name="**/*.java"/>
-            </fileset>
+             <fileset dir="."></fileset>
         </scp>
     </target>
 </project>
