@@ -2,15 +2,13 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
+
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta name="keywords" content="" />
         <meta name="description" content="" />
         <title>Gray Admin Template</title>
         <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
         <script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
-        <script src="js/global.js" type="text/javascript" charset="utf-8"></script>
-        <script src="js/modal.js" type="text/javascript" charset="utf-8"></script>
-        
         <script>
             $(document).ready(function() {
                 $.ajax({
@@ -20,14 +18,57 @@
                         datos = '<table><tr><th></th><th>Id</th><th>Nombre</th><th>Opciones</th></tr>';
 
                         $.each(data, function(index) {
-                            datos += '<tr><td></td><td>' + data[index].idCategoria + '</td><td>' + data[index].nombreCategoria + '</td><td><a href=javascript:borrar(' + data[index].idCategoria + ')>Borrar</a></td><td><a href=javascript:actualizar(' + data[index].idCategoria + ')>Update</a></td></tr>';
+                            datos += '<tr><td></td><td>' + data[index].idCliente + '</td><td>' + data[index].nombre + '</td><td>' + data[index].apellido1 + '</td><td>' + data[index].apellido2 + '</td><td>' + data[index].telefono + '</td><td>' + data[index].direccion + '</td><td>' + data[index].email + '</td><td>' + data[index].dni + '</td><td><a href=javascript:borrar(' + data[index].idCliente + ')>Borrar</a></td><td><a href=javascript:actualizar(' + data[index].idCliente + ')>Update</a></td></tr>';
                         });
                         datos += '</table>';
                         $('#clientes').html(datos);
                     }
                 });
             });
+            function borrar(idCliente) {
+                $.ajax({
+                    dataType: 'json',
+                    url: 'clientes/clientes_delete.php',
+                    type: 'POST',
+                    data: 'idCliente=' + idCliente,
+                    success: function() {
+                        $.ajax({
+                            dataType: 'json',
+                            url: 'clientes/clientes.php',
+                            success: function(data) {
+                                datos = '<table><tr><th></th><th>Id</th><th>Nombre</th><th>Opciones</th></tr>';
+
+                                $.each(data, function(index) {
+                                    datos += '<tr><td></td><td>' + data[index].idCliente + '</td><td>' + data[index].nombre + '</td><td>' + data[index].apellido1 + '</td><td>' + data[index].apellido2 + '</td><td>' + data[index].telefono + '</td><td>' + data[index].direccion + '</td><td>' + data[index].email + '</td><td>' + data[index].dni + '</td><td><a href=javascript:borrar(' + data[index].idCliente + ')>Borrar</a></td><td><a href=javascript:actualizar(' + data[index].idCliente + ')>Update</a></td></tr>';
+                                });
+                                datos += '</table>';
+                                $('#clientes').html(datos);
+                            }
+                        });
+                    }
+                });
+            }
+            function actualizar(idCliente) {
+                $.ajax({
+                    dataType: 'json',
+                    url: 'clientes/clientes_buscar.php',
+                    type: 'POST',
+                    data: 'idCliente=' + idCliente,
+                    success: function(data) {
+                        formulario = '<a href="" class="dropdown_button"><small class="icon plus"></small><span>Update Category</span></a>';
+                        formulario += '<div class="dropdown" style="display: block;">';
+                        formulario += '<div class="arrow"></div><div class="content"><form action="categorias/categorias_update.php" method="post">';
+                        formulario += '<p><label>Category ID:</label><input type="text" class="text w_22" name="idCategoria" value="' + data.idCategoria + '" readonly></input></p><p><label>Category Name:</label><input type="text" class="text w_22" name="nombreCategoria" value="' + data.nombreCategoria + '"></input></p>';
+                        formulario += '</form>';
+                        formulario += '<a class="button green right" onclick="document.forms[0].submit();return false;"><small class="icon check"></small><span>Save</span></a>';
+                        formulario += '<div class="clear"></div></div></div>';
+                        $('#actualizar').html(formulario);
+                    }
+                });
+            }
         </script>
+        <script src="js/global.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/modal.js" type="text/javascript" charset="utf-8"></script>
     </head>
     <body>
         <div id="header">
@@ -62,7 +103,7 @@
                     </div>
                     <div id="submenu">
                         <div class="modules_left">
-                            <div class="module buttons">
+                            <div class="module buttons" id="actualizar">
                                 <a href="" class="dropdown_button"><small class="icon plus"></small><span>New Cliente</span></a>
                                 <div class="dropdown">
                                     <div class="arrow"></div>
@@ -98,7 +139,8 @@
                                             </p>
                                         </form>
 
-                                        <a href="" class="button green right" onclick="document.forms[0].submit();return false;"><small class="icon check"></small><span>Save</span></a>
+                                        <a href="" class="button green right" onclick="document.forms[0].submit();
+                return false;"><small class="icon check"></small><span>Save</span></a>
                                         <a class="button red mr right close" ><small class="icon cross"></small><span>Close</span></a>
                                         <div class="clear"></div>
                                     </div>
@@ -127,7 +169,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="clear"></div>
                         <div id="body_footer">
                             <div id="bottom_left"><div id="bottom_right"></div></div>

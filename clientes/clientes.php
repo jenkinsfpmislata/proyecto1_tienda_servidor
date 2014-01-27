@@ -5,11 +5,10 @@
     
 	$SQL = "SELECT * from clientes"; 
     $result = mysql_query( $SQL ) or die("Couldn t execute query.".mysql_error());
-	//$datos[];
 	$i=0;
     while($fila = mysql_fetch_array($result,MYSQL_ASSOC)) 
 	{
-		$datos[$i]=array('idCliente'=>$fila["idCliente"],'nombre'=>$fila["nombre"]);
+		$datos[$i]=array('idCliente'=>$fila["idCliente"],'nombre'=>$fila["nombre"],'apellido1'=>$fila["apellido1"],'apellido2'=>$fila["apellido2"],'telefono'=>$fila["telefono"],'direccion'=>$fila["direccion"],'email'=>$fila["email"],'dni'=>$fila["dni"]);
 		$i++;
 	}
 		
