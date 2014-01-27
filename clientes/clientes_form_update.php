@@ -1,7 +1,7 @@
 <?php
     $idCliente = $_POST["id"];
 
-    $db = mysql_connect("localhost", "root", "") or die("Connection Error: " . mysql_error());
+    $db = mysql_connect("localhost", "root", "frodo2013") or die("Connection Error: " . mysql_error());
     mysql_select_db("proyecto1_tienda_servidor") or die("Error conecting to db.");
 
     $SQL = "SELECT * from clientes where idCliente = $idCliente";
