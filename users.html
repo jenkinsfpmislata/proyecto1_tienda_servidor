@@ -6,14 +6,28 @@
         <meta name="keywords" content="" />
         <meta name="description" content="" />
         <title>Admin Template</title>
+        <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
         <script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
-        <script src="js/menu.js" type="text/javascript" charset="utf-8"></script>
         <script src="js/global.js" type="text/javascript" charset="utf-8"></script>
         <script src="js/modal.js" type="text/javascript" charset="utf-8"></script>
-        <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
-        <!--[if IE 6]>
-                <link rel="stylesheet" href="css/ie6.css" type="text/css" media="screen" charset="utf-8" />
-        <![endif]-->		
+        
+        <script>
+            $(document).ready(function() {
+                $.ajax({
+                    dataType: 'json',
+                    url: 'articulos/articulos.php',
+                    success: function(data) {
+                        datos = '<table><tr><th></th><th>Id</th><th>Nombre</th><th>Opciones</th></tr>';
+
+                        $.each(data, function(index) {
+                            datos += '<tr><td></td><td>' + data[index].idCategoria + '</td><td>' + data[index].nombreCategoria + '</td><td><a href=javascript:borrar(' + data[index].idCategoria + ')>Borrar</a></td><td><a href=javascript:actualizar(' + data[index].idCategoria + ')>Update</a></td></tr>';
+                        });
+                        datos += '</table>';
+                        $('#clientes').html(datos);
+                    }
+                });
+            });
+        </script>
     </head>
     <body>
         <div id="header">
@@ -104,208 +118,16 @@
                     </div>
                     <div id="desc">
                         <div class="body">
-                            <div class="col w10 last">
-                                <div class="content">
-                                    <div class="shelf">
-                                        <div class="left"></div>
-                                        <div class="right"></div>
-                                        <div class="inside">
-                                            <div class="books">
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Username</span>
-                                                        <img src="images/shelf_sample_image.png" alt="" />
-                                                    </a>
-                                                </div>
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Username</span>
-                                                        <img src="images/shelf_sample_image.png" alt="" />
-                                                    </a>
-                                                </div>
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Username</span>
-                                                        <img src="images/shelf_sample_image.png" alt="" />
-                                                    </a>
-                                                </div>
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Username</span>
-                                                        <img src="images/shelf_sample_image.png" alt="" />
-                                                    </a>
-                                                </div>
-                                                <div class="col w2 last">
-                                                    <a href="">
-                                                        <span>Username</span>
-                                                        <img src="images/shelf_sample_image.png" alt="" />
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="shelf">
-                                        <div class="left"></div>
-                                        <div class="right"></div>
-                                        <div class="inside">
-                                            <div class="books">
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Username</span>
-                                                        <img src="images/shelf_sample_image.png" alt="" />
-                                                    </a>
-                                                </div>
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Username</span>
-                                                        <img src="images/shelf_sample_image.png" alt="" />
-                                                    </a>
-                                                </div>
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Username</span>
-                                                        <img src="images/shelf_sample_image.png" alt="" />
-                                                    </a>
-                                                </div>
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Username</span>
-                                                        <img src="images/shelf_sample_image.png" alt="" />
-                                                    </a>
-                                                </div>
-                                                <div class="col w2 last">
-                                                    <a href="">
-                                                        <span>Username</span>
-                                                        <img src="images/shelf_sample_image.png" alt="" />
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="shelf">
-                                        <div class="left"></div>
-                                        <div class="right"></div>
-                                        <div class="inside">
-                                            <div class="books">
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Username</span>
-                                                        <img src="images/shelf_sample_image.png" alt="" />
-                                                    </a>
-                                                </div>
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Username</span>
-                                                        <img src="images/shelf_sample_image.png" alt="" />
-                                                    </a>
-                                                </div>
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Username</span>
-                                                        <img src="images/shelf_sample_image.png" alt="" />
-                                                    </a>
-                                                </div>
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Username</span>
-                                                        <img src="images/shelf_sample_image.png" alt="" />
-                                                    </a>
-                                                </div>
-                                                <div class="col w2 last">
-                                                    <a href="">
-                                                        <span>Username</span>
-                                                        <img src="images/shelf_sample_image.png" alt="" />
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="shelf">
-                                        <div class="left"></div>
-                                        <div class="right"></div>
-                                        <div class="inside">
-                                            <div class="books">
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Username</span>
-                                                        <img src="images/shelf_sample_image.png" alt="" />
-                                                    </a>
-                                                </div>
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Username</span>
-                                                        <img src="images/shelf_sample_image.png" alt="" />
-                                                    </a>
-                                                </div>
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Username</span>
-                                                        <img src="images/shelf_sample_image.png" alt="" />
-                                                    </a>
-                                                </div>
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Username</span>
-                                                        <img src="images/shelf_sample_image.png" alt="" />
-                                                    </a>
-                                                </div>
-                                                <div class="col w2 last">
-                                                    <a href="">
-                                                        <span>Username</span>
-                                                        <img src="images/shelf_sample_image.png" alt="" />
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="shelf">
-                                        <div class="left"></div>
-                                        <div class="right"></div>
-                                        <div class="inside">
-                                            <div class="books">
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Username</span>
-                                                        <img src="images/shelf_sample_image.png" alt="" />
-                                                    </a>
-                                                </div>
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Username</span>
-                                                        <img src="images/shelf_sample_image.png" alt="" />
-                                                    </a>
-                                                </div>
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Username</span>
-                                                        <img src="images/shelf_sample_image.png" alt="" />
-                                                    </a>
-                                                </div>
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Username</span>
-                                                        <img src="images/shelf_sample_image.png" alt="" />
-                                                    </a>
-                                                </div>
-                                                <div class="col w2 last">
-                                                    <a href="">
-                                                        <span>Username</span>
-                                                        <img src="images/shelf_sample_image.png" alt="" />
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="clear"></div>
-                                    </div>
+                            <div id="table" class="help">
+                                <h1>Clientes : </h1>
+                                <div class="col w10 last">
+                                    <div class="content" id="clientes">
+                                        <!----- Tabla Clientes--->
+                                    </div>							
                                 </div>
-                                <div class="clear"></div>
                             </div>
-                            <div class="clear"></div>
                         </div>
+                        
                         <div class="clear"></div>
                         <div id="body_footer">
                             <div id="bottom_left"><div id="bottom_right"></div></div>
