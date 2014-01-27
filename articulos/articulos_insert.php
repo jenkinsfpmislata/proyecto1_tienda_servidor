@@ -11,5 +11,5 @@ mysql_select_db("proyecto1_tienda_servidor") or die("Error Connection to DB".mys
 $SQL = "INSERT INTO articulos VALUES (null,'$nombreArticulo','$descripcionArticulo','$precioArticulo','$idCategorias');";
 $result=mysql_query($SQL) or die("Couldnt execute query.".mysql_error());
 
-header("Location:articulos.html");
+header("Location:../articles.html");
 ?>

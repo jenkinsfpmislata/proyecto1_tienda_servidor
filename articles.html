@@ -6,14 +6,73 @@
         <meta name="keywords" content="" />
         <meta name="description" content="" />
         <title>Admin Template</title>
+        <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
         <script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
-        <script src="js/menu.js" type="text/javascript" charset="utf-8"></script>
+        <script>
+            $(document).ready(function() {
+                $.ajax({
+                    dataType: 'json',
+                    url: 'articulos/articulos.php',
+                    success: function(data) {
+                        datos = '<table><tr><th></th><th>Id</th><th>Nombre</th><th>Descripcion</th><th>Precio</th><th>Categoria</th><th colspan="2" align="center">Opciones</th></tr>';
+
+                        $.each(data, function(index) {
+                            datos += '<tr><td></td><td>' + data[index].idArticulo + '</td><td>' + data[index].nombreArticulo + '</td><td>' + data[index].descripcionArticulo + '</td><td>' + data[index].precioArticulo + '</td><td>' + data[index].idCategoria + '</td><td><a href=javascript:borrar(' + data[index].idArticulo + ')>Borrar</a></td><td><a href=javascript:actualizar(' + data[index].idArticulo + ')>Update</a></td></tr>';
+                        });
+                        datos += '</table>';
+                        $('#articulos').html(datos);
+                    }
+                });
+            });
+            function borrar(idArticulo) {
+                $.ajax({
+                    dataType: 'json',
+                    url: 'articulos/articulos_delete.php',
+                    type: 'POST',
+                    data: 'idArticulo=' + idArticulo,
+                    success: function() {
+                        $.ajax({
+                            dataType: 'json',
+                            url: 'articulos/articulos.php',
+                            success: function(data) {
+                                datos = '<table><tr><th></th><th>Id</th><th>Nombre</th><th>Descripcion</th><th>Precio</th><th>Categoria</th><th colspan="2" align="center">Opciones</th></tr>';
+
+                                $.each(data, function(index) {
+                                    datos += '<tr><td></td><td>' + data[index].idArticulo + '</td><td>' + data[index].nombreArticulo + '</td><td>' + data[index].descripcionArticulo + '</td><td>' + data[index].precioArticulo + '</td><td>' + data[index].idCategoria + '</td><td><a href=javascript:borrar(' + data[index].idArticulo + ')>Borrar</a></td><td><a href=javascript:actualizar(' + data[index].idArticulo + ')>Update</a></td></tr>';
+                                });
+                                datos += '</table>';
+                                $('#articulos').html(datos);
+                            }
+                        });
+                    }
+                });
+            }
+            function actualizar(idArticulo) {
+                $.ajax({
+                    dataType: 'json',
+                    url: 'articulos/articulos_buscar.php',
+                    type: 'POST',
+                    data: 'idArticulo=' + idArticulo,
+                    success: function(data) {
+                        formulario = '<a href="" class="dropdown_button"><small class="icon plus"></small><span>Update Cliente</span></a>';
+                        formulario += '<div class="dropdown" style="display: block;">';
+                        formulario += '<div class="arrow"></div><div class="content"><form action="articulos/articulos_update.php" method="post">';
+                        formulario += '<p><label>Articulo ID:</label><input type="text" class="text w_22" name="idArticulo" value="' + data.idArticulo + '" readonly></input></p>';
+                        formulario += '<p><label>Articulo Name:</label><input type="text" class="text w_22" name="nombreArticulo" value="' + data.nombreArticulo + '"></input></p>';
+                        formulario += '<p><label>Articulo Description:</label><input type="text" class="text w_22" name="descripcionArticulo" value="' + data.descripcionArticulo + '"></input></p>';
+                        formulario += '<p><label>Articulo Price:</label><input type="text" class="text w_22" name="precioArticulo" value="' + data.precioArticulo+ '"></input></p>';
+                        formulario += '<p><label>Articulo Category:</label><input type="text" class="text w_22" name="idCategoria" value="' + data.idCategoria + '"></input></p>';
+                        formulario += '</form>';
+                        formulario += '<a class="button green right" onclick="document.forms[0].submit();return false;"><small class="icon check"></small><span>Save</span></a>';
+                        formulario += '<div class="clear"></div></div></div>';
+                        $('#actualizar').html(formulario);
+                    }
+                });
+            }
+        </script>
         <script src="js/global.js" type="text/javascript" charset="utf-8"></script>
         <script src="js/modal.js" type="text/javascript" charset="utf-8"></script>
-        <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
-        <!--[if IE 6]>
-                <link rel="stylesheet" href="css/ie6.css" type="text/css" media="screen" charset="utf-8" />
-        <![endif]-->		
+
     </head>
     <body>
         <div id="header">
@@ -48,7 +107,7 @@
                     </div>
                     <div id="submenu">
                         <div class="modules_left">
-                            <div class="module buttons">
+                            <div class="module buttons" id="actualizar">
                                 <a href="" class="dropdown_button"><small class="icon plus"></small><span>New Article</span></a>
                                 <div class="dropdown">
                                     <div class="arrow"></div>
@@ -70,11 +129,11 @@
                                                 <label for="name">Articulo Category :</label>
                                                 <input type="text" class="text w_22" name="idCategoria" value="" />
                                             </p>
-                                           
+
                                         </form>
 
                                         <a href="" class="button green right" onclick="document.forms[0].submit();
-                                                return false;"><small class="icon check"></small><span>Save</span></a>
+                return false;"><small class="icon check"></small><span>Save</span></a>
                                         <a class="button red mr right close" ><small class="icon cross"></small><span>Close</span></a>
                                         <div class="clear"></div>
                                     </div>
@@ -94,209 +153,16 @@
                     </div>
                     <div id="desc">
                         <div class="body">
-                            <div class="col w1"></div>
-                            <div class="col w8 last">
-                                <div class="content">
-                                    <div class="shelf">
-                                        <div class="left"></div>
-                                        <div class="right"></div>
-                                        <div class="inside">
-                                            <div class="books articles">
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Here is the title, two lines</span>
-                                                        <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</small>
-                                                    </a>
-                                                </div>
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Here is the title, two lines</span>
-                                                        <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</small>
-                                                    </a>
-                                                </div>
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Here is the title, two lines</span>
-                                                        <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</small>
-                                                    </a>
-                                                </div>
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Here is the title, two lines</span>
-                                                        <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</small>
-                                                    </a>
-                                                </div>
-                                                <div class="col w2 last">
-                                                    <a href="">
-                                                        <span>Here is the title, two lines</span>
-                                                        <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</small>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="shelf">
-                                        <div class="left"></div>
-                                        <div class="right"></div>
-                                        <div class="inside">
-                                            <div class="books articles">
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Here is the title, two lines</span>
-                                                        <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</small>
-                                                    </a>
-                                                </div>
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Here is the title, two lines</span>
-                                                        <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</small>
-                                                    </a>
-                                                </div>
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Here is the title, two lines</span>
-                                                        <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</small>
-                                                    </a>
-                                                </div>
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Here is the title, two lines</span>
-                                                        <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</small>
-                                                    </a>
-                                                </div>
-                                                <div class="col w2 last">
-                                                    <a href="">
-                                                        <span>Here is the title, two lines</span>
-                                                        <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</small>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="shelf">
-                                        <div class="left"></div>
-                                        <div class="right"></div>
-                                        <div class="inside">
-                                            <div class="books articles">
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Here is the title, two lines</span>
-                                                        <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</small>
-                                                    </a>
-                                                </div>
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Here is the title, two lines</span>
-                                                        <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</small>
-                                                    </a>
-                                                </div>
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Here is the title, two lines</span>
-                                                        <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</small>
-                                                    </a>
-                                                </div>
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Here is the title, two lines</span>
-                                                        <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</small>
-                                                    </a>
-                                                </div>
-                                                <div class="col w2 last">
-                                                    <a href="">
-                                                        <span>Here is the title, two lines</span>
-                                                        <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</small>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="shelf">
-                                        <div class="left"></div>
-                                        <div class="right"></div>
-                                        <div class="inside">
-                                            <div class="books articles">
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Here is the title, two lines</span>
-                                                        <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</small>
-                                                    </a>
-                                                </div>
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Here is the title, two lines</span>
-                                                        <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</small>
-                                                    </a>
-                                                </div>
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Here is the title, two lines</span>
-                                                        <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</small>
-                                                    </a>
-                                                </div>
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Here is the title, two lines</span>
-                                                        <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</small>
-                                                    </a>
-                                                </div>
-                                                <div class="col w2 last">
-                                                    <a href="">
-                                                        <span>Here is the title, two lines</span>
-                                                        <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</small>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="shelf">
-                                        <div class="left"></div>
-                                        <div class="right"></div>
-                                        <div class="inside">
-                                            <div class="books articles">
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Here is the title, two lines</span>
-                                                        <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</small>
-                                                    </a>
-                                                </div>
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Here is the title, two lines</span>
-                                                        <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</small>
-                                                    </a>
-                                                </div>
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Here is the title, two lines</span>
-                                                        <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</small>
-                                                    </a>
-                                                </div>
-                                                <div class="col w2">
-                                                    <a href="">
-                                                        <span>Here is the title, two lines</span>
-                                                        <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</small>
-                                                    </a>
-                                                </div>
-                                                <div class="col w2 last">
-                                                    <a href="">
-                                                        <span>Here is the title, two lines</span>
-                                                        <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</small>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="clear"></div>
-                                    </div>
+                            <div id="table" class="help">
+                                <h1>Articulos: </h1>
+                                <div class="col w10 last">
+                                    <div class="content" id="articulos">
+                                        <!----- Tabla Articulos--->
+                                    </div>							
                                 </div>
-                                <div class="clear"></div>
                             </div>
-                            <div class="clear"></div>
                         </div>
+
                         <div class="clear"></div>
                         <div id="body_footer">
                             <div id="bottom_left"><div id="bottom_right"></div></div>
