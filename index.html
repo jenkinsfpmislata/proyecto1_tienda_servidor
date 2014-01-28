@@ -10,6 +10,8 @@
         <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
         <script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
         <script>
+            $username = $_POST('username');
+            
             $(document).ready(function() {
                 $.ajax({
                     dataType: 'json',
@@ -97,7 +99,7 @@
                 </a>
             </div>
             <div class="col w5 last right bottomlast">
-                <p class="last">Logged in as <span class="strong">Admin,</span> <a href="login.html">Logout</a></p>
+                <p class="last">Logged in as <span class="strong"><script>$username</script></span> <a href="login.html">Logout</a></p>
             </div>
             <div class="clear"></div>
         </div>
