@@ -8,7 +8,7 @@
 	$i=0;
     while($fila = mysql_fetch_array($result,MYSQL_ASSOC)) 
 	{
-		$datos[$i]=array('idArticulo'=>$fila["idArticulo"],'nombreArticulo'=>$fila["nombreArticulo"],'descripcionArticulo'=>$fila["descripcionArticulo"],'precioArticulo'=>$fila["precioArticulo"],'idCategoria'=>$fila["idCategorias"]);
+		$datos[$i]=array('idArticulo'=>$fila["idArticulo"],'nombreArticulo'=>$fila["nombreArticulo"],'descripcionArticulo'=>$fila["descripcionArticulo"],'precioArticulo'=>$fila["precioArticulo"],'idCategorias'=>$fila["idCategorias"]);
 		$i++;
 	}
 	header('Content-type: application/json');
