@@ -47,6 +47,23 @@
                     }
                 });
             }
+            function buscarNombre() {
+             $.ajax({
+                    dataType: 'json',
+                    url: 'articulos/articulos_buscar_nombre.php',
+                    type: 'POST',
+                    data: 'nombreArticulo=' + $('#buscar').val(),
+                    success: function(data) {
+                        datos = '<table><tr><th></th><th>Id</th><th>Nombre</th><th>Descripcion</th><th>Precio</th><th>Categoria</th><th colspan="2" align="center">Opciones</th></tr>';
+
+                        $.each(data, function(index) {
+                            datos += '<tr><td></td><td>' + data[index].idArticulo + '</td><td>' + data[index].nombreArticulo + '</td><td>' + data[index].descripcionArticulo + '</td><td>' + data[index].precioArticulo + '</td><td>' + data[index].idCategoria + '</td><td><a href=javascript:borrar(' + data[index].idArticulo + ')>Borrar</a></td><td><a href=javascript:actualizar(' + data[index].idArticulo + ')>Update</a></td></tr>';
+                        });
+                        datos += '</table>';
+                        $('#articulos').html(datos);
+                    }
+                });
+            }
             function actualizar(idArticulo) {
                 $.ajax({
                     dataType: 'json',
@@ -145,8 +162,8 @@
                         </div>
                         <div class="modules_right">
                             <div class="module search">
-                                <form action="">
-                                    <p><input type="text" value="Search..." name="user_search" /></p>
+                                <form action="javascript:buscarNombre()">
+                                    <p><input type="text" id="buscar" value="Search..."/></p>
                                 </form>
                             </div>
                         </div>

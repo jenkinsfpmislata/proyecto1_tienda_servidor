@@ -48,6 +48,23 @@
                     }
                 });
             }
+            function buscarNombre() {
+             $.ajax({
+                    dataType: 'json',
+                    url: 'clientes/clientes_buscar_nombre.php',
+                    type: 'POST',
+                    data: 'nombreCliente=' + $('#buscar').val(),
+                    success: function(data) {
+                        datos = '<table><tr><th></th><th>Id</th><th>Nombre</th><th>Apellido1</th><th>Apellido2</th><th>Telefono</th><th>Direccion</th><th>Email</th><th>DNI</th><th colspan="2" align="center">Opciones</th></tr>';
+
+                        $.each(data, function(index) {
+                            datos += '<tr><td></td><td>' + data[index].idCliente + '</td><td>' + data[index].nombre + '</td><td>' + data[index].apellido1 + '</td><td>' + data[index].apellido2 + '</td><td>' + data[index].telefono + '</td><td>' + data[index].direccion + '</td><td>' + data[index].email + '</td><td>' + data[index].dni + '</td><td><a href=javascript:borrar(' + data[index].idCliente + ')>Borrar</a></td><td><a href=javascript:actualizar(' + data[index].idCliente + ')>Update</a></td></tr>';
+                        });
+                        datos += '</table>';
+                        $('#clientes').html(datos);
+                    }
+                });
+            }
             function actualizar(idCliente) {
                 $.ajax({
                     dataType: 'json',
@@ -159,8 +176,8 @@
                         </div>
                         <div class="modules_right">
                             <div class="module search">
-                                <form action="">
-                                    <p><input type="text" value="Search..." name="user_search" /></p>
+                                <form action="javascript:buscarNombre()">
+                                    <p><input type="text" id="buscar" value="Search..."/></p>
                                 </form>
                             </div>
                         </div>
