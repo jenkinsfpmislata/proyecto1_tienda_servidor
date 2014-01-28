@@ -5,7 +5,7 @@ $nombreCliente = $_POST['nombreCliente'];
 $db = mysql_connect("localhost", "root", "frodo2013") or die("Connection Error: " . mysql_error());
 mysql_select_db("proyecto1_tienda_servidor") or die("Error conecting to db.");
 
-$SQL = "SELECT * from clientes where nombreCliente like '%$nombreCliente%' ; ";
+$SQL = "SELECT * from clientes where nombre like '%$nombreCliente%' ; ";
 $result = mysql_query($SQL) or die("Couldn t execute query." . mysql_error());
 
 $i = 0;
