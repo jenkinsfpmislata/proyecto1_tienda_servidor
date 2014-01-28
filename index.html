@@ -49,12 +49,11 @@
                 });
             }
             function buscarNombre() {
-            valor = $('#search').val();
-                $.ajax({
+             $.ajax({
                     dataType: 'json',
                     url: 'categorias/categorias_buscar_nombre.php',
                     type: 'POST',
-                    data: 'nombreCategoria=' + valor,
+                    data: 'nombreCategoria=' + $('#buscar').val(),
                     success: function(data) {
                         datos = '<table><tr><th></th><th>Id</th><th>Nombre</th><th align="center" colspan="2" >Opciones</th></tr>';
 
@@ -149,7 +148,7 @@
                         <div class="modules_right">
                             <div class="module search">
                                 <form onsubmit="javascript:buscarNombre()">
-                                    <p><input type="text" id="search" value="Search..." name="nombreCategoria"/></p>
+                                    <p><input type="text" id="buscar" value="Search..."/></p>
                                 </form>
                             </div>
                         </div>
