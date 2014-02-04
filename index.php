@@ -1,27 +1,5 @@
 <?php
-function estoy_logeado () {
-    @session_start(); 
-     
-    if (!isset($_SESSION['user'])){ 
-        return false;
-        
-    }
-    if (!is_array($_SESSION['user'])){
-        return false;
-    }
-    if (empty($_SESSION['user']['user'])){ 
-        return false;
-    }
-    return true;
-}
-
-if (!estoy_logeado()) { // si no estoy logeado
-    header('Location:login.html'); //saltamos a la página de login
-    die('Acceso no autorizado'); // por si falla el header (solo se pueden mandar las cabeceras si no se ha impreso nada)
-}
-
 function logout() {
-    @session_start(); //inicia sesion (la @ evita los mensajes de error si la session ya está iniciada)
     unset($_SESSION['user']); //eliminamos la variable con los datos de usuario;
     session_write_close(); //nos asegurmos que se guarda y cierra la sesion
     header('Location:login.html');
@@ -122,7 +100,7 @@ function logout() {
                     <img src="images/logo.gif" class="logo" alt="Logo" width="50%" height="50%"/>
             </div>
             <div class="col w5 last right bottomlast">
-                <p class="last">Logged in as <span class="strong" id="username">Admin</span> <a href="login.html">Logout</a></p>
+                <p class="last">Logged in as <span class="strong" id="username">Admin</span> <a href="<?logout()?>">Logout</a></p>
             </div>
             <div class="clear"></div>
         </div>

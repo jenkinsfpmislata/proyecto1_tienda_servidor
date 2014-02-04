@@ -36,14 +36,7 @@ if ($fila) {
         header("Location:index.php");
     } else {
         unset($_SESSION['user']); 
-        header("Location:login.html");
+        header("Location:clientes.html");
     }
 }
-//if ($count == 1) {
-//    $_SESSION["user"] = $user;
-//    $_SESSION["pass"] = $pass;
-//    header("Location: index.php");
-//} else {
-//    header("Location: login.html");
-//}
 ?>
