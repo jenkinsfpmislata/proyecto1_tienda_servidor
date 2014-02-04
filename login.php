@@ -1,7 +1,12 @@
 <?php
 session_start();
+if($_POST["username"]== null || $_POST["password"] == null){
+    header('Location: login.html');
+} else {
+    
 $user = $_POST["username"];
 $pass = $_POST["password"];
+
 $user = stripslashes($user);
 $pass = stripslashes($pass);
 $user = mysql_real_escape_string($user);
@@ -31,12 +36,13 @@ if ($fila) {
             trigger_error('El valor de la constante md5 no es válido. Utiliza MD5 o SHA1 o TEXTO', E_USER_ERROR);
     }
 
-    if ($hash == md5($fila['password'])) {
-        $_SESSION['user'] = array('user' => $fila['username']); 
+    if ($hash == md5($fila['password'])) {    
+        $_SESSION['username'] = $fila['username']; 
         header("Location:index.php");
-    } else {
-        unset($_SESSION['user']); 
-        header("Location:clientes.html");
+    } else {     
+        unset($_SESSION['username']); 
+        header("Location:login.html");
     }
+}
 }
 ?>

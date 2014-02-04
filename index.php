@@ -1,6 +1,6 @@
 <?php
 function logout() {
-    unset($_SESSION['user']); //eliminamos la variable con los datos de usuario;
+    unset($_SESSION['username']); //eliminamos la variable con los datos de usuario;
     session_write_close(); //nos asegurmos que se guarda y cierra la sesion
     header('Location:login.html');
 }
@@ -100,7 +100,7 @@ function logout() {
                     <img src="images/logo.gif" class="logo" alt="Logo" width="50%" height="50%"/>
             </div>
             <div class="col w5 last right bottomlast">
-                <p class="last">Logged in as <span class="strong" id="username">Admin</span> <a href="<?logout()?>">Logout</a></p>
+                <p class="last">Logged in as <span class="strong" id="username">Admin</span> <a href="<?=logout()?>">Logout</a></p>
             </div>
             <div class="clear"></div>
         </div>
