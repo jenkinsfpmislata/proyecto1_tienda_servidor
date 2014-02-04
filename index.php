@@ -2,14 +2,21 @@
 function estoy_logeado () {
     @session_start(); 
      
-    if (!isset($_SESSION['user'])) return false; //no existe la variable $_SESSION['USUARIO']. No logeado.
-    if (!is_array($_SESSION['user'])) return false; //la variable no es un array $_SESSION['USUARIO']. No logeado.
-    if (empty($_SESSION['user']['user'])) return false; //no tiene almacenado el usuario en $_SESSION['USUARIO']. No logeado.
+    if (!isset($_SESSION['user'])){ 
+        return false;
+        
+    }
+    if (!is_array($_SESSION['user'])){
+        return false;
+    }
+    if (empty($_SESSION['user']['user'])){ 
+        return false;
+    }
     return true;
 }
 
 if (!estoy_logeado()) { // si no estoy logeado
-    header('Location: login.php'); //saltamos a la página de login
+    header('Location:login.html'); //saltamos a la página de login
     die('Acceso no autorizado'); // por si falla el header (solo se pueden mandar las cabeceras si no se ha impreso nada)
 }
 
@@ -17,7 +24,7 @@ function logout() {
     @session_start(); //inicia sesion (la @ evita los mensajes de error si la session ya está iniciada)
     unset($_SESSION['user']); //eliminamos la variable con los datos de usuario;
     session_write_close(); //nos asegurmos que se guarda y cierra la sesion
-    return true;
+    header('Location:login.html');
 }
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">

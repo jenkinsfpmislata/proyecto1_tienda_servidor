@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $user = $_POST["username"];
 $pass = $_POST["password"];
 $user = stripslashes($user);
@@ -32,18 +32,12 @@ if ($fila) {
     }
 
     if ($hash == md5($fila['password'])) {
-        @session_start();
         $_SESSION['user'] = array('user' => $fila['username']); 
-        return true;
-        header("Location: index.php");
+        header("Location:index.php");
     } else {
-        @session_start();
         unset($_SESSION['user']); 
-        return false;
-        header("Location: login.html");
+        header("Location:login.html");
     }
-} else {
-    return false;
 }
 //if ($count == 1) {
 //    $_SESSION["user"] = $user;
