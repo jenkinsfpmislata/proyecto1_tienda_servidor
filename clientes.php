@@ -119,13 +119,13 @@ if(!isset($_SESSION['username']))
                         <div id="right"></div>
                         <ul>
                             <li>
-                                <a href="index.html" ><span>Categorias</span></a>
+                                <a href="index.php" ><span>Categorias</span></a>
                             </li>
                             <li>
-                                <a href="clientes.html" class="selected"><span>Clientes</span></a>
+                                <a href="clientes.php" class="selected"><span>Clientes</span></a>
                             </li>
                             <li>
-                                <a href="articulos.html"><span>Articles</span></a>
+                                <a href="articulos.php"><span>Articles</span></a>
                             </li>
                         </ul>
                         <div class="clear"></div>
