@@ -16,7 +16,7 @@ if ($_POST["username"] == null || $_POST["password"] == null) {
     $user = mysql_real_escape_string($user);
     $pass = mysql_real_escape_string($pass);
 //-----------------------------------------------//
-    $db = mysql_connect("localhost", "root", "") or die("Connection Error: " . mysql_error());
+    $db = mysql_connect("localhost", "root", "frodo2013") or die("Connection Error: " . mysql_error());
     mysql_select_db("proyecto1_tienda_servidor") or die("Error conecting to db.");
 
     $SQL = "SELECT * FROM  `login` WHERE username =  '$user' AND PASSWORD =  '$pass';";
