@@ -4,7 +4,7 @@ if ($_POST["username"] == null || $_POST["password"] == null) {
     header('Location: login.html');
 } else {
 //------------------------------------------------// 
-    session_start();
+    @session_start();
 
     $user = $_POST["username"];
     $pass = $_POST["password"];
@@ -21,7 +21,6 @@ if ($_POST["username"] == null || $_POST["password"] == null) {
     $SQL = "SELECT * FROM  `login` WHERE username =  '$user' AND PASSWORD =  '$pass';";
     $result = mysql_query($SQL) or die("Couldn t execute query." . mysql_error());
 
-//    $count = mysql_num_rows($result);
     $fila = mysql_fetch_array($result, MYSQL_ASSOC);
 //-----------------------------------------------//
     if ($fila) {
