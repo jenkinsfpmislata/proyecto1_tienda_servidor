@@ -1,8 +1,9 @@
 <?php
-function logout() {
-    unset($_SESSION['username']); //eliminamos la variable con los datos de usuario;
-    session_write_close(); //nos asegurmos que se guarda y cierra la sesion
-    header('Location:login.html');
+session_start();
+
+if(!isset($_SESSION['username'])) 
+{
+    header('Location: login.html'); 
 }
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -97,10 +98,10 @@ function logout() {
     <body>
         <div id="header">
             <div class="col w5 bottomlast">
-                    <img src="images/logo.gif" class="logo" alt="Logo" width="50%" height="50%"/>
+                <img src="images/logo.gif" class="logo" alt="Logo" width="50%"/>
             </div>
             <div class="col w5 last right bottomlast">
-                <p class="last">Logged in as <span class="strong" id="username">Admin</span> <a href="<?=logout()?>">Logout</a></p>
+                <p class="last">Logged in as <span class="strong" id="username">Admin</span> <a href="logout.php">Logout</a></p>
             </div>
             <div class="clear"></div>
         </div>
@@ -112,13 +113,13 @@ function logout() {
                         <div id="right"></div>
                         <ul>
                             <li>
-                                <a href="index.html" class="selected"><span>Categorias</span></a>
+                                <a href="index.php" class="selected"><span>Categorias</span></a>
                             </li>
                             <li>
-                                <a href="clientes.html"><span>Clientes</span></a>
+                                <a href="clientes.php"><span>Clientes</span></a>
                             </li>
                             <li>
-                                <a href="articulos.html"><span>Articulos</span></a>
+                                <a href="articulos.php"><span>Articulos</span></a>
                             </li>
                         </ul>
                         <div class="clear"></div>

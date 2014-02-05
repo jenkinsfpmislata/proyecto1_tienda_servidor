@@ -1,17 +1,18 @@
 <?php
 
+session_start();
+
 if ($_POST["username"] == null || $_POST["password"] == null) {
     header('Location: login.html');
 } else {
 //------------------------------------------------// 
-    @session_start();
 
     $user = $_POST["username"];
     $pass = $_POST["password"];
 
     $user = stripslashes($user);
     $pass = stripslashes($pass);
-    
+
     $user = mysql_real_escape_string($user);
     $pass = mysql_real_escape_string($pass);
 //-----------------------------------------------//
@@ -23,28 +24,13 @@ if ($_POST["username"] == null || $_POST["password"] == null) {
 
     $fila = mysql_fetch_array($result, MYSQL_ASSOC);
 //-----------------------------------------------//
-    if ($fila) {
-        switch ('md5') {
-            case 'sha1' | 'SHA1':
-                $hash = sha1($pass);
-                break;
-            case 'md5' | 'MD5':
-                $hash = md5($pass);
-                break;
-            case 'texto' | 'TEXTO':
-                $hash = $pass;
-                break;
-            default:
-                trigger_error('El valor de la constante md5 no es válido. Utiliza MD5 o SHA1 o TEXTO', E_USER_ERROR);
-        }
+    $hash = md5($pass);
+//-----------------------------------------------//       
+    if ($hash == md5($fila['password'])) {
+        $_SESSION['username'] = $fila['username'];
+        header("Location: index.php");
+    } else {
+        header("Location: login.html");
     }
-        echo 'preee';
-        if ($hash == md5($fila['password'])) {
-            $_SESSION['username'] = $fila['username'];
-            header("Location: index.php");
-        } else {
-            unset($_SESSION['username']);
-            header("Location:login.html");
-        }
 }
 ?>
