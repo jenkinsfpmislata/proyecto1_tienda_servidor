@@ -104,7 +104,7 @@ if(!isset($_SESSION['username']))
     <body>
         <div id="header">
             <div class="col w5 bottomlast">
-                    <img src="images/logo.gif" class="logo" alt="Logo" width="50%" height="50%"/>
+                    <img src="images/logo.gif" class="logo" alt="Logo" width="50%"/>
             </div>
             <div class="col w5 last right bottomlast">
                 <p class="last">Logged in as <span class="strong">Admin,</span> <a href="">Logout</a></p>
