@@ -19,7 +19,7 @@ if ($_POST["username"] == null || $_POST["password"] == null) {
     $db = mysql_connect("localhost", "root", "frodo2013") or die("Connection Error: " . mysql_error());
     mysql_select_db("proyecto1_tienda_servidor") or die("Error conecting to db.");
 
-    $SQL = "SELECT * FROM  `clientes` WHERE username =  '$user' and password =  '$pass';";
+    $SQL = "SELECT * FROM  `clientes` WHERE username = '$user' and password =  '$pass';";
     $result = mysql_query($SQL) or die("Couldn t execute query." . mysql_error());
 
     $fila = mysql_fetch_array($result, MYSQL_ASSOC);
