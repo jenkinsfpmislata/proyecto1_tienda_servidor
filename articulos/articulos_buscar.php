@@ -10,7 +10,7 @@ $result = mysql_query($SQL) or die("Couldn t execute query." . mysql_error());
 
 
 $fila = mysql_fetch_array($result, MYSQL_ASSOC);
-$datos=array('idArticulo'=>$fila["idArticulo"],'nombreArticulo'=>$fila["nombreArticulo"],'descripcionArticulo'=>$fila["descripcionArticulo"],'precioArticulo'=>$fila["precioArticulo"],'idCategorias'=>$fila["idCategorias"]);
+$datos=array('idArticulo'=>$fila["idArticulo"],'nombreArticulo'=>$fila["nombreArticulo"],'descripcionArticulo'=>$fila["descripcionArticulo"],'precioArticulo'=>$fila["precioArticulo"],'idCategorias'=>$fila["idCategorias"],'oferta'=>$fila["oferta"]);
 
 header('Content-type: application/json');
 echo json_encode($datos);

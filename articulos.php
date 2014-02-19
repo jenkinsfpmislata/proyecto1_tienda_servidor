@@ -54,7 +54,7 @@ if(!isset($_SESSION['username']))
                 });
             }
             function buscarNombre() {
-             $.ajax({
+                $.ajax({
                     dataType: 'json',
                     url: 'articulos/articulos_buscar_nombre.php',
                     type: 'POST',
@@ -83,8 +83,13 @@ if(!isset($_SESSION['username']))
                         formulario += '<p><label>Articulo ID:</label><input type="text" class="text w_22" name="idArticulo" value="' + data.idArticulo + '" readonly></input></p>';
                         formulario += '<p><label>Articulo Name:</label><input type="text" class="text w_22" name="nombreArticulo" value="' + data.nombreArticulo + '"></input></p>';
                         formulario += '<p><label>Articulo Description:</label><input type="text" class="text w_22" name="descripcionArticulo" value="' + data.descripcionArticulo + '"></input></p>';
-                        formulario += '<p><label>Articulo Price:</label><input type="text" class="text w_22" name="precioArticulo" value="' + data.precioArticulo+ '"></input></p>';
+                        formulario += '<p><label>Articulo Price:</label><input type="text" class="text w_22" name="precioArticulo" value="' + data.precioArticulo + '"></input></p>';
                         formulario += '<p><label>Articulo Category:</label><input type="text" class="text w_22" name="idCategorias" value="' + data.idCategorias + '"></input></p>';
+                        if(data.oferta == 1){
+                        formulario += '<p><label>Article sale:</label><select class="text w_20" name=oferta ><option value=0>No</option><option value=1 selected>Yes</option></select></p>';      
+                        }else{
+                        formulario += '<p><label>Article sale:</label><select class="text w_20" name=oferta ><option value=0 selected>No</option><option value=1>Yes</option></select></p>';      
+                        }
                         formulario += '</form>';
                         formulario += '<a class="button green right" onclick="document.forms[0].submit();return false;"><small class="icon check"></small><span>Save</span></a>';
                         formulario += '<div class="clear"></div></div></div>';
@@ -100,7 +105,7 @@ if(!isset($_SESSION['username']))
     <body>
         <div id="header">
             <div class="col w5 bottomlast">
-                    <img src="images/logo.gif" class="logo" alt="Logo" width="50%"/>
+                <img src="images/logo.gif" class="logo" alt="Logo" width="50%"/>
             </div>
             <div class="col w5 last right bottomlast">
                 <p class="last">Logged in as <span class="strong">Admin,</span> <a href="login.html">Logout</a></p>
@@ -149,6 +154,13 @@ if(!isset($_SESSION['username']))
                                             <p>
                                                 <label for="name">Articulo Category :</label>
                                                 <input type="text" class="text w_22" name="idCategorias" value="" />
+                                            </p>
+                                            <p>
+                                                <label for="name">Article Sale:</label>
+                                                <select class="text w_20" name="oferta">
+                                                    <option value="0" selected>No</option>
+                                                    <option value="1">Yes</option>
+                                                </select>
                                             </p>
 
                                         </form>
