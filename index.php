@@ -113,13 +113,13 @@ if(!isset($_SESSION['username']))
                         <div id="right"></div>
                         <ul>
                             <li>
-                                <a href="index.php" class="selected"><span>Categorias</span></a>
+                                <a href="index.php" class="selected"><span>Categories</span></a>
                             </li>
                             <li>
-                                <a href="clientes.php"><span>Clientes</span></a>
+                                <a href="clientes.php"><span>Clients</span></a>
                             </li>
                             <li>
-                                <a href="articulos.php"><span>Articulos</span></a>
+                                <a href="articulos.php"><span>Articles</span></a>
                             </li>
                         </ul>
                         <div class="clear"></div>
@@ -127,7 +127,7 @@ if(!isset($_SESSION['username']))
                     <div id="submenu">
                         <div class="modules_left">
                             <div class="module buttons" id ="actualizar">
-                                <a href="" class="dropdown_button"><small class="icon plus"></small><span>Nueva Categoria</span></a>
+                                <a href="" class="dropdown_button"><small class="icon plus"></small><span>New Categorie</span></a>
                                 <div class="dropdown">
                                     <div class="arrow"></div>
                                     <div class="content">
@@ -147,7 +147,7 @@ if(!isset($_SESSION['username']))
                             </div>
                         </div>
                         <div class="title">
-                            Categorias
+                            Categories
                         </div>
                         <div class="modules_right">
                             <div class="module search">
@@ -160,7 +160,7 @@ if(!isset($_SESSION['username']))
                     <div id="desc">
                         <div class="body">
                             <div id="table" class="help">
-                                <h1>Categorias : </h1>
+                                <h1>Categories : </h1>
                                 <div class="col w10 last">
                                     <div class="content" id="categorias">
                                         <!----- Tabla Categorias--->

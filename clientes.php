@@ -119,10 +119,10 @@ if(!isset($_SESSION['username']))
                         <div id="right"></div>
                         <ul>
                             <li>
-                                <a href="index.php" ><span>Categorias</span></a>
+                                <a href="index.php" ><span>Categories</span></a>
                             </li>
                             <li>
-                                <a href="clientes.php" class="selected"><span>Clientes</span></a>
+                                <a href="clientes.php" class="selected"><span>Clients</span></a>
                             </li>
                             <li>
                                 <a href="articulos.php"><span>Articles</span></a>
@@ -133,37 +133,37 @@ if(!isset($_SESSION['username']))
                     <div id="submenu">
                         <div class="modules_left">
                             <div class="module buttons" id="actualizar">
-                                <a href="" class="dropdown_button"><small class="icon plus"></small><span>Nuevo Cliente</span></a>
+                                <a href="" class="dropdown_button"><small class="icon plus"></small><span>New Client</span></a>
                                 <div class="dropdown">
                                     <div class="arrow"></div>
                                     <div class="content">
                                         <form action="clientes/clientes_insert.php" method="post">
                                             <p>
-                                                <label>Cliente Name:</label>
+                                                <label>Client Name:</label>
                                                 <input type="text" class="text w_22" name="nombre" value="" />
                                             </p>
                                             <p>
-                                                <label >Cliente Surname1:</label>
+                                                <label >Client Surname1:</label>
                                                 <input type="text" class="text w_22" name="apellido1" value="" />
                                             </p>
                                             <p>
-                                                <label >Cliente Surname2 :</label>
+                                                <label >Client Surname2 :</label>
                                                 <input type="text" class="text w_22" name="apellido2" value="" />
                                             </p>
                                             <p>
-                                                <label >Cliente Telephon :</label>
+                                                <label >Client Telephon :</label>
                                                 <input type="text" class="text w_22" name="telefono" value="" />
                                             </p>
                                             <p>
-                                                <label >Cliente Adress :</label>
+                                                <label >Client Adress :</label>
                                                 <input type="text" class="text w_22" name="direccion"  value=""/>
                                             </p>
                                             <p>
-                                                <label >Cliente Email :</label>
+                                                <label >Client Email :</label>
                                                 <input type="text" class="text w_22" name="email" value=""/>
                                             </p>
                                             <p>
-                                                <label >Cliente DNI :</label>
+                                                <label >Client DNI :</label>
                                                 <input type="text" class="text w_22" name="dni" value=""/>
                                             </p>
                                         </form>
@@ -177,7 +177,7 @@ if(!isset($_SESSION['username']))
                             </div>
                         </div>
                         <div class="title">
-                            Clientes
+                            Clients
                         </div>
                         <div class="modules_right">
                             <div class="module search">
@@ -190,7 +190,7 @@ if(!isset($_SESSION['username']))
                     <div id="desc">
                         <div class="body">
                             <div id="table" class="help">
-                                <h1>Clientes : </h1>
+                                <h1>Clients : </h1>
                                 <div class="col w10 last">
                                     <div class="content" id="clientes">
                                         <!----- Tabla Clientes--->

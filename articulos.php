@@ -120,13 +120,13 @@ if(!isset($_SESSION['username']))
                         <div id="right"></div>
                         <ul>
                             <li>
-                                <a href="index.php" ><span>Categorias</span></a>
+                                <a href="index.php" ><span>Categories</span></a>
                             </li>
                             <li>
-                                <a href="clientes.php"><span>Clientes</span></a>
+                                <a href="clientes.php"><span>Clients</span></a>
                             </li>
                             <li>
-                                <a href="articulos.php" class="selected"><span>Articulos</span></a>
+                                <a href="articulos.php" class="selected"><span>Articles</span></a>
                             </li>
                         </ul>
                         <div class="clear"></div>
@@ -134,25 +134,25 @@ if(!isset($_SESSION['username']))
                     <div id="submenu">
                         <div class="modules_left">
                             <div class="module buttons" id="actualizar">
-                                <a href="" class="dropdown_button"><small class="icon plus"></small><span>Nuevo Articulo</span></a>
+                                <a href="" class="dropdown_button"><small class="icon plus"></small><span>New Article</span></a>
                                 <div class="dropdown">
                                     <div class="arrow"></div>
                                     <div class="content">
                                         <form action="articulos/articulos_insert.php" method="post">
                                             <p>
-                                                <label for="name">Articulo Name:</label>
+                                                <label for="name">Article Name:</label>
                                                 <input type="text" class="text w_22" name="nombreArticulo" value="" />
                                             </p>
                                             <p>
-                                                <label for="name">Articulo Description:</label>
+                                                <label for="name">Article Description:</label>
                                                 <input type="text" class="text w_22" name="descripcionArticulo" value="" />
                                             </p>
                                             <p>
-                                                <label for="name">Articulo Price :</label>
+                                                <label for="name">Article Price :</label>
                                                 <input type="text" class="text w_22" name="precioArticulo" value="" />
                                             </p>
                                             <p>
-                                                <label for="name">Articulo Category :</label>
+                                                <label for="name">Article Category :</label>
                                                 <input type="text" class="text w_22" name="idCategorias" value="" />
                                             </p>
                                             <p>
@@ -187,7 +187,7 @@ if(!isset($_SESSION['username']))
                     <div id="desc">
                         <div class="body">
                             <div id="table" class="help">
-                                <h1>Articulos: </h1>
+                                <h1>Articles: </h1>
                                 <div class="col w10 last">
                                     <div class="content" id="articulos">
                                         <!----- Tabla Articulos--->
